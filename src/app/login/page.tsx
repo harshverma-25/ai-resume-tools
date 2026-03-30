@@ -13,11 +13,18 @@ export default function LoginPage() {
       password,
     })
 
+    
+
     if (error) {
       alert(error.message)
     } else {
       alert("Signup successful! Check your email.")
     }
+  }
+  const handleGoogleLogin = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+    })
   }
 
   const handleLogin = async () => {
@@ -69,7 +76,14 @@ export default function LoginPage() {
           className="w-full border p-2"
         >
           Sign Up
+          
         </button>
+        <button
+  onClick={handleGoogleLogin}
+  className="w-full bg-red-500 text-white p-2 mt-2"
+>
+  Sign in with Google
+</button>
 
       </div>
     </div>
